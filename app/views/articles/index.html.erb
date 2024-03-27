@@ -1,12 +1,16 @@
 <h1>Articles</h1>
 
+Our Blog has <%= Article.public_count %> article and counting!
+
 <ul>
     <% @articles.each do |article| %>
+        <% unless article.archived? %>
         <li>
             <!-- <a href="/articles/<%= article.id %>"><%= article.title %></a> the below line is a replacement for this -->
             <%= link_to article.title, article %>
         </li>
         <% end %>
+    <% end %>
 </ul>
 
 <%= link_to "Add New Article", new_article_path%>
